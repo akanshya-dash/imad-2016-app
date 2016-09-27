@@ -5,8 +5,54 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne= {
+    title: 'article-1 | akanshya',
+    heading: 'article pne',
+    date: 'september of twenty seventh, two thousand and sixteen',
+    content: ` <p>
+            
+            this is a article writtten by me. it is about the fantasy novel im working upon. its a breif introduction to the novel scenario. hope you enjoy it.
+            the story is set in a royal setup. it begins witha huge destruction of the most powerful kingdom. and the queen and her children fleeing the kingdom leaving the king behind, who is actually, cursed.
+            </p> `
+        };
+        
+        function createTemplate (data) {
+            var title = data.title;
+            var date = data.date;
+            var heading = data.heading;
+            var content = data.content;
+         var htmlTemplate = `<html>
+    <head>
+        <title> ${title}</title>
+        <meta name="viewport" content= "width=device-width, initial-scale=1" />
+         <link href="/ui/style.css" rel="stylesheet" />
+        
+        </head>
+        
+    <body>
+        <div class= "container">
+            <div>
+            <a href = "/"> Home </a>
+            
+            </div>
+        <hr/>
+        <h3>${heading}</h3>
+        <div>
+            ${date}
+            </div>
+    ${content}
+        
+        </div>
+        
+        </body>
+</html>
+` 
+       return htmlTemplate;
+        }            
+        
+
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.send(createTemplate(articleOne));
 });
 
 app.get('/ui/style.css', function (req, res) {
