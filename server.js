@@ -89,12 +89,7 @@ app.get('/:articleName' , function (req, res) {
  
  var articleName = req.params.articleName;
  
-app.get('/article-2' , function (req, res) {
-   res.send('article two will be served soon'); 
-});
-app.get('/article-3' , function (req, res) {
-   res.send('article three will be served soon'); 
-});
+
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
